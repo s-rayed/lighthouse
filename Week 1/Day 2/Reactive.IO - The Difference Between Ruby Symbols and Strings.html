@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    
+        <title>Reactive.IO - The Difference Between Ruby Symbols and Strings</title>
+    
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <meta name="description" content="Reactive.IO is experienced technical leadership that helps businesses build their mission-critical software right the first time." />
+    
+    <meta name="keywords" content="reactive, responsive, io, business, business strategy, technology, technology strategy, software architecture, agile development, open source, cloud computing, big data, software engineering, ruby, jruby, rails, ruby on rails, java, scala, akka, erlang, elixir, phoenix, phoenix framework, javascript, ajax, postgres, postgresql, systems, unix, cryptography, encryption, security" />
+
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/headers/header1.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/plugins/flexslider/flexslider.css">
+    <link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css">
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="/assets/css/pages/page_contact.css">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="/assets/css/themes/default.css" id="style_color">
+    <link rel="stylesheet" href="/assets/css/themes/headers/header1-default.css" id="style_color-header-1">
+    <!-- Various Fixes -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <link rel="stylesheet" href="/assets/css/fixes.css">
+</head>
+
+<body>
+
+<!--=== Top ===-->
+<div class="top">
+    <div class="container">
+        <ul class="loginbar pull-right">
+            <li><i class="icon-envelope"></i><a href="mailto:contact@reactive.io">contact@reactive.io</a></li>
+            <li class="devider"></li>
+            <li><i class="icon-phone"></i><a href="tel:646-820-4411">(646) 820-4411</a></li>
+        </ul>
+    </div>
+</div><!--/top-->
+<!--=== End Top ===-->
+
+<!--=== Header ===-->
+<div class="header">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                
+                    <a class="navbar-brand" href="/">
+                
+
+                    <img id="logo-header-reactive" src="/assets/img/reactive_logo.png" alt="Logo">
+
+                    
+                        <img id="logo-header-io" src="/assets/img/io_logo.png" alt="Logo">
+                    
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                      <li>
+                    
+                        <a href="/">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/#headline-what-we-do">
+                            Expertise
+                        </a>
+                    </li>
+                    <!--
+                    <li>
+                        <a href="/#headline-who-we-work-with">
+                            Clients
+                        </a>
+                    </li>
+                    -->
+                    <li>
+                        <a href="/#headline-where-we-do-it">
+                            Location
+                        </a>
+                    </li>
+                    
+                      <li>
+                    
+                        <a href="/academy">
+                            Academy
+                        </a>
+                    </li>
+                    
+                      <li>
+                    
+                        <a href="/tips/">
+                            Tips
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="mailto:contact@reactive.io">
+                            Contact
+                        </a>
+                    </li> -->
+                </ul>
+            </div><!-- /navbar-collapse -->
+        </div>
+    </div>
+</div><!--/header-->
+<!--=== End Header ===-->
+
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40 blog-item">
+    <div class="container">
+        <h2 class="pull-left">The Official Blog of Reactive.IO</h2>
+    </div>
+</div>
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container blog-page blog-item">
+    <!--Blog Post-->
+    <div class="blog margin-bottom-40">
+        <div class="blog-img">
+            <img class="img-responsive" src="/assets/tips/2009/01/11/the-difference-between-ruby-symbols-and-strings-wide.png" alt="">
+        </div>
+        <h1><a href="/tips/2009/01/11/the-difference-between-ruby-symbols-and-strings">The Difference Between Ruby Symbols and Strings</a></h1>
+        <div class="blog-post-tags">
+            <ul class="list-unstyled list-inline blog-info">
+                <li><i class="icon-calendar"></i> January 11, 2009</li>
+                <li><i class="icon-pencil"></i> Robert Sosinski</li>
+                <li><i class="icon-tags"></i> Ruby</li>
+                <li>
+                  
+                </li>
+            </ul>
+        </div>
+        <div id="content"><p>Symbols are quite an interesting, and often ill-understood, facet of Ruby. Used extensively throughout Rails and many other Ruby libraries, Symbols are a common sight. However, their rational and purpose is something of a mystery to many Rubyists. This misunderstanding can probably be attributed to many methods throughout Ruby using Symbols and Strings interchangeably.  Hopefully, this tutorial will show the value of Symbols and why they are a very useful attribute of Ruby.</p>
+<h3>Symbols are Strings, Sort Of</h3>
+<p>The truth of the matter is that Symbols are Strings, just with an important difference, Symbols are immutable.  Mutable objects can be changed after assignment while immutable objects can only be overwritten.  Ruby is quite unique in offering mutable Strings, which adds greatly to its expressiveness. However mutable Strings can have their share of issues in terms of creating unexpected results and reduced performance.  It is for this reason Ruby also offers programmers the choice of Symbols.</p>
+<p>So, how flexible are Symbols in terms of representing data?  The answer is just as flexible as Strings.  Lets take a look at some valid Strings and their Symbol equivalents.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">"hello"</span>
+<span class="ss">:hello</span>
+
+<span class="s2">"hello world"</span>
+<span class="ss">:"hello world"</span>
+
+<span class="n">bang</span> <span class="o">=</span> <span class="s2">"!"</span>
+
+<span class="s2">"hello world</span><span class="si">#{</span><span class="n">bang</span><span class="si">}</span><span class="s2">"</span> <span class="c1"># =&gt; "hello world!"</span>
+<span class="ss">:"hello world</span><span class="si">#{</span><span class="n">bang</span><span class="si">}</span><span class="ss">"</span> <span class="c1"># =&gt; :"hello world!"</span></code></pre></figure><p>Many Ruby programmers think that Symbols can only contain alphanumeric characters, however by using quotes you can not only use the same characters as you would a String, but also interpolate Symbols as well.  The only thing that a Symbol needs syntactically is a colon <code>:</code> prepended. Symbols are actually so similar to Strings that converting between the two is very simple and consistent.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">:"hello world"</span><span class="p">.</span><span class="nf">to_s</span> <span class="c1"># =&gt; "hello world"</span>
+<span class="s2">"hello world"</span><span class="p">.</span><span class="nf">intern</span> <span class="c1"># =&gt; :"hello world"</span></code></pre></figure><p>This being the case, what can&#8217;t Symbols do?  Well, they can&#8217;t change.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"hello"</span> <span class="o">&lt;&lt;</span> <span class="s2">" world"</span>
+<span class="nb">puts</span> <span class="ss">:hello</span> <span class="o">&lt;&lt;</span> <span class="ss">:" world"</span>
+
+<span class="c1"># =&gt; hello world</span>
+<span class="c1"># =&gt; *.rb:4: undefined method `&lt;&lt;' for :hello:Symbol (NoMethodError)</span></code></pre></figure><p>In this example, we tried to insert <code>world</code> into the end of both a String and a Symbol. While the mutable String updated itself, the immutable Symbol gave us an error.  From this, we can determine that all the receiver changing methods (e.g. upcase!, delete!, gsub!) we have grown to depend on with Strings will not be with us in Symbols. This being the case, why would Ruby even have Symbols as Strings seem to be quite a flexible upgrade?  The reason is that while mutability is very useful, it can also cause quite a few problems.</p>
+<h3>Mutability Gone Wrong</h3>
+<p>Strings often perform double duty in an program by both storing data and driving operation.  For holding data, mutability offers us a slew of expressive options.  However, a programs operation (especially in critical applications) should be a bit more ridged.  Take the following example:</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">status</span> <span class="o">=</span> <span class="s2">"peace"</span>
+
+<span class="n">buggy_logger</span> <span class="o">=</span> <span class="n">status</span>
+
+<span class="nb">print</span> <span class="s2">"Status: "</span>
+<span class="nb">print</span> <span class="n">buggy_logger</span> <span class="o">&lt;&lt;</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="c1"># &lt;- This insertion is the bug.</span>
+
+<span class="k">def</span> <span class="nf">launch_nukes?</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+  <span class="k">unless</span> <span class="n">status</span> <span class="o">==</span> <span class="s1">'peace'</span>
+    <span class="k">return</span> <span class="kp">true</span>
+  <span class="k">else</span>
+    <span class="k">return</span> <span class="kp">false</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">print</span> <span class="s2">"Nukes Launched: </span><span class="si">#{</span><span class="n">launch_nukes?</span><span class="p">(</span><span class="n">status</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+
+<span class="c1"># =&gt; Status: peace</span>
+<span class="c1"># =&gt; Nukes Launched: true</span></code></pre></figure><p>In this example, a script silently watches the world for aggression and danger. Once things go wrong, it launches the nukes.  However, by having a mutable String control the program&#8217;s operation, a buggy logger disintegrates the entire world.  Now, the above script does make some mistakes (I would have cloned the status String instead of just assigning it for example). However, we can see that relying on something that can change during run-time can cause some unexpected results.</p>
+<h3>Frozen Strings</h3>
+<p>There are two ways to handle the mutability issue above.  The first is to freeze the String and thus making it immutable.  Once a String is frozen it cannot be changed.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">example</span> <span class="o">=</span> <span class="s2">"hello world"</span>
+<span class="n">example</span><span class="p">.</span><span class="nf">upcase!</span>
+
+<span class="nb">puts</span> <span class="n">example</span>
+
+<span class="n">example</span><span class="p">.</span><span class="nf">freeze</span>
+<span class="n">example</span><span class="p">.</span><span class="nf">downcase!</span>
+
+<span class="c1"># =&gt; "HELLO WORLD"</span>
+<span class="c1"># =&gt; *.rb:7:in `downcase!': can't modify frozen string (TypeError)</span></code></pre></figure><p>The second way would be to make your program use Symbols.  But if frozen Strings work just as Symbols, we are back to wondering the true value of Symbols and why they should be used.</p>
+<h3>String and Symbol Performance</h3>
+<p>Because Strings are mutable, the Ruby interpreter never knows what that String may hold in terms of data.  As such, every String needs to have its own place in memory.  We can see this by creating some Strings and printing their object id.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s2">"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="nb">puts</span> <span class="s2">"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="nb">puts</span> <span class="s2">"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="nb">puts</span> <span class="s2">"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="nb">puts</span> <span class="s2">"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+
+<span class="c1"># =&gt; 3102960</span>
+<span class="c1"># =&gt; 3098410</span>
+<span class="c1"># =&gt; 3093860</span>
+<span class="c1"># =&gt; 3089330</span>
+<span class="c1"># =&gt; 3084800</span></code></pre></figure><p><strong><span class="caps">NOTE</span>: Your object id&#8217;s will be different then the ones above.</strong></p>
+<p>What we see above might not seem like a big issue, but behind the scenes is some heavy waste.  To understand why, we first have to understand what is going on under the hood.  An abridged explanation is as follows:</p>
+<ol>
+	<li>First, a new String object is instantiated with the value of <code>hello world</code>.</li>
+	<li>The Ruby interpreter needs to look at the heap (your computers memory), find a place to put the new string and keep track of it via its object id.</li>
+	<li>The String is passed to the puts method, and output to the screen.</li>
+	<li>The Ruby interpreter sees that the String will not be used again as it is not assigned to a variable, and marks it for destruction.</li>
+	<li>Back to step one four more times.</li>
+</ol>
+<p>Ruby&#8217;s garbage collector, or GC, is of the mark and sweep variety. This means that objects to be destroyed are marked during the programs operation.  The GC then sweeps up all the marked objects on the heap whenever it has some spare time.  However, above we are creating a new object, storing and ultimately destroying it when reusing the same object would be much more efficient.  Lets do the same thing but with Symbols instead.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="ss">:"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="nb">puts</span> <span class="ss">:"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="nb">puts</span> <span class="ss">:"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="nb">puts</span> <span class="ss">:"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+<span class="nb">puts</span> <span class="ss">:"hello world"</span><span class="p">.</span><span class="nf">object_id</span>
+
+<span class="c1"># =&gt; 239518</span>
+<span class="c1"># =&gt; 239518</span>
+<span class="c1"># =&gt; 239518</span>
+<span class="c1"># =&gt; 239518</span>
+<span class="c1"># =&gt; 239518</span></code></pre></figure><p>This time, every Symbol shares the same object id, and as such the same space on the heap. To further increase performance, Ruby will not mark Symbols for destruction, allowing you to reuse them again and again. As Symbols stay in memory throughout the programs operation, we can quickly snag them from memory instead of instantiating a new copy every time. In fact, Symbols are not only stored in memory, they are also keep track of via an optimized Symbols dictionary. You can see it by running the next example.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="no">Symbol</span><span class="p">.</span><span class="nf">all_symbols</span><span class="p">.</span><span class="nf">inspect</span>
+
+<span class="c1"># =&gt; A long list of Symbols...</span></code></pre></figure><p>The <code>all_symbols</code> class method will return an Array of every Symbol currently used in your program.  Every time you create a new Symbol, it is also put here. When you use a Symbol, Ruby will check the dictionary first, and if available it will be fetched and used.  If the Symbol cannot be found in the dictionary, only then will the interpreter instantiate a new Symbol and put it in the heap. We can easily see this process by dropping into <span class="caps">IRB</span> and typing the following:</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">&gt;&gt;</span> <span class="no">Symbol</span><span class="p">.</span><span class="nf">all_symbols</span><span class="p">.</span><span class="nf">collect</span><span class="p">{</span><span class="o">|</span><span class="n">sym</span><span class="o">|</span> <span class="n">sym</span><span class="p">.</span><span class="nf">to_s</span><span class="p">}.</span><span class="nf">include?</span><span class="p">(</span><span class="s2">"new_symbol"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kp">false</span>
+<span class="o">&gt;&gt;</span> <span class="ss">:new_symbol</span>
+<span class="o">=&gt;</span> <span class="ss">:new_symbol</span>
+<span class="o">&gt;&gt;</span> <span class="no">Symbol</span><span class="p">.</span><span class="nf">all_symbols</span><span class="p">.</span><span class="nf">collect</span><span class="p">{</span><span class="o">|</span><span class="n">sym</span><span class="o">|</span> <span class="n">sym</span><span class="p">.</span><span class="nf">to_s</span><span class="p">}.</span><span class="nf">include?</span><span class="p">(</span><span class="s2">"new_symbol"</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kp">true</span></code></pre></figure><p>So how much faster are Symbols compared to Strings?  Well, lets build a script to benchmark the difference.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'benchmark'</span>
+
+<span class="n">str</span> <span class="o">=</span> <span class="no">Benchmark</span><span class="p">.</span><span class="nf">measure</span> <span class="k">do</span>
+  <span class="mi">10_000_000</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+    <span class="s2">"test"</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">total</span>
+
+<span class="n">sym</span> <span class="o">=</span> <span class="no">Benchmark</span><span class="p">.</span><span class="nf">measure</span> <span class="k">do</span>
+  <span class="mi">10_000_000</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+    <span class="ss">:test</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">total</span>
+
+<span class="nb">puts</span> <span class="s2">"String: "</span> <span class="o">+</span> <span class="n">str</span><span class="p">.</span><span class="nf">to_s</span>
+<span class="nb">puts</span> <span class="s2">"Symbol: "</span> <span class="o">+</span> <span class="n">sym</span><span class="p">.</span><span class="nf">to_s</span>
+<span class="nb">puts</span></code></pre></figure><p>In this example, we are creating 10 million new Strings and then 10 million new Symbols. With the Benchmark library, we can find out how long each activity takes and compare. After running this script three times, I got the following results (yours will most likely be different).</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ruby benchmark.rb
+String: 2.24
+Symbol: 1.32
+
+<span class="gp">$ </span>ruby benchmark.rb
+String: 2.25
+Symbol: 1.32
+
+<span class="gp">$ </span>ruby benchmark.rb
+String: 2.24
+Symbol: 1.33</code></pre></figure><p>On average, we are getting a 40% increase solely by using Symbols.  However, Symbols are not just faster then Strings in how they are stored and used, but also in how they are compared. As Symbols of the same text share the same space on the heap, testing for equality is as quick as comparing the object id&#8217;s.  Testing equality for Strings however, is a bit more computationally expensive. As every String has its own place in memory, the interpreter has to compare the actual data making up the String. A good example to visualize this type of check would be the following:</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">a</span> <span class="o">=</span> <span class="s2">"test"</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="s2">"test"</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span>
+<span class="n">e</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="n">number</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nf">length</span><span class="p">)</span> <span class="p">?</span> <span class="n">a</span><span class="p">.</span><span class="nf">length</span> <span class="p">:</span> <span class="n">b</span><span class="p">.</span><span class="nf">length</span>
+
+<span class="n">number</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">index</span><span class="o">|</span>
+  <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2"> is equal to </span><span class="si">#{</span><span class="n">b</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not equal to </span><span class="si">#{</span><span class="n">b</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="kp">false</span>
+    <span class="k">break</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">a</span><span class="p">.</span><span class="nf">join</span><span class="si">}</span><span class="s2"> equal to </span><span class="si">#{</span><span class="n">b</span><span class="p">.</span><span class="nf">join</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># =&gt; t is equal to t</span>
+<span class="c1"># =&gt; e is equal to e</span>
+<span class="c1"># =&gt; s is equal to s</span>
+<span class="c1"># =&gt; t is equal to t</span>
+<span class="c1"># =&gt; test equal to test: true</span></code></pre></figure><p>So, back to benchmarking.  How much faster is comparing Symbols then to Strings?  Lets find out:</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'benchmark'</span>
+
+<span class="n">str</span> <span class="o">=</span> <span class="no">Benchmark</span><span class="p">.</span><span class="nf">measure</span> <span class="k">do</span>
+  <span class="mi">10_000_000</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+    <span class="s2">"test"</span> <span class="o">==</span> <span class="s2">"test"</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">total</span>
+
+<span class="n">sym</span> <span class="o">=</span> <span class="no">Benchmark</span><span class="p">.</span><span class="nf">measure</span> <span class="k">do</span>
+  <span class="mi">10_000_000</span><span class="p">.</span><span class="nf">times</span> <span class="k">do</span>
+    <span class="ss">:test</span> <span class="o">==</span> <span class="ss">:test</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">total</span>
+
+<span class="nb">puts</span> <span class="s2">"String: "</span> <span class="o">+</span> <span class="n">str</span><span class="p">.</span><span class="nf">to_s</span>
+<span class="nb">puts</span> <span class="s2">"Symbol: "</span> <span class="o">+</span> <span class="n">sym</span><span class="p">.</span><span class="nf">to_s</span>
+<span class="nb">puts</span></code></pre></figure><p>Just like before, I ran this script three times and got the following results.</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">$ </span>ruby benchmark.rb
+String: 4.48
+Symbol: 2.39
+
+<span class="gp">$ </span>ruby benchmark.rb
+String: 4.47
+Symbol: 2.39
+
+<span class="gp">$ </span>ruby benchmark.rb
+String: 4.47
+Symbol: 2.38</code></pre></figure><p>And just like before, we are close to a cutting our processing time by half. Not so bad.</p>
+<h3>Summary</h3>
+<p>Overall, we went though quite a bit in this tutorial.  First, we learned about mutability and how Strings and Symbols are different in this regard.  We then jumped into when to use each and finally looked at the performance characteristics of both. Now that you have a better idea of this interesting aspect of Ruby, you can start using Symbols to keep your applications running faster and more consistently.</p></div>
+    </div>
+    <!--End Blog Post-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+
+<!--=== Footer ===-->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 md-margin-bottom-40">
+                <!-- About -->
+                <div class="headline"><h2>About Reactive.IO</h2></div>
+                <p class="margin-bottom-25 md-margin-bottom-40">Based in Austin Texas, Reactive.IO is a business and technology consultancy that ensures you build your mission-critical software right the first time.</p>
+
+                <!-- Newsletter -->
+                <div class="headline"><h2>Get Reactive.TODAY</h2></div>
+                <p>Subscribe to Reactive.TODAY, the newsletter that keeps you ahead of the competition.</p>
+
+                <form action="http://reactive.us3.list-manage.com/subscribe/post?u=78ad6d5efcef79087945a3e3d&amp;id=fef3bc45bc" method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate class="footer-subsribe">
+                    <div class="input-group">
+                        <input type="email" value="" name="EMAIL" class="form-control" placeholder="Email Address">
+                        <div style="position: absolute; left: -5000px;">
+                            <input type="text" name="b_78ad6d5efcef79087945a3e3d_fc4cb645e3" value="">
+                        </div>
+                        <input type="hidden" value="/tips/2009/01/11/the-difference-between-ruby-symbols-and-strings" name="URL">
+                        <span class="input-group-btn">
+                            <input type="submit" value="Subscribe" name="subscribe" class="btn-u">
+                        </span>
+                    </div>
+                </form>
+            </div><!--/col-md-4-->
+
+            <div class="col-md-4 md-margin-bottom-40">
+                <div class="posts">
+                    <div class="headline"><h2>New Reactive.TIPS</h2></div>
+
+                    
+                        <dl class="dl-horizontal">
+                            <dt><a href="/tips/2015/03/02/understanding-optionals-in-swift"><img src="/assets/tips/2015/03/02/understanding-optionals-in-swift-small.png" alt="" /></a></dt>
+                            <dd>
+                                <p><a href="/tips/2015/03/02/understanding-optionals-in-swift">Understanding Optionals in Swift</a></p>
+                            </dd>
+                        </dl>
+                    
+                        <dl class="dl-horizontal">
+                            <dt><a href="/tips/2015/02/07/introduction-to-distributed-messaging-with-elixir"><img src="/assets/tips/2015/02/07/introduction-to-distributed-messaging-with-elixir-small.png" alt="" /></a></dt>
+                            <dd>
+                                <p><a href="/tips/2015/02/07/introduction-to-distributed-messaging-with-elixir">Introduction to Distributed Messaging with Elixir</a></p>
+                            </dd>
+                        </dl>
+                    
+                        <dl class="dl-horizontal">
+                            <dt><a href="/tips/2015/02/03/introduction-to-parallel-computing-with-elixir"><img src="/assets/tips/2015/02/03/introduction-to-parallel-computing-with-elixir-small.png" alt="" /></a></dt>
+                            <dd>
+                                <p><a href="/tips/2015/02/03/introduction-to-parallel-computing-with-elixir">Introduction to Parallel Computing with Elixir</a></p>
+                            </dd>
+                        </dl>
+                    
+                </div>
+            </div><!--/col-md-4-->
+
+            <div class="col-md-4">
+                <!-- Monthly Newsletter -->
+                <div class="headline"><h2>Get Connected</h2></div>
+                <div class="contact-info dl-horizontal">
+                    <address class="md-margin-bottom-40">
+                        <a target="_blank" href="https://www.google.com/maps/place/600+Congress+Ave,+Austin,+TX+78701/@30.2686077,-97.7453903,17z/data=!4m2!3m1!1s0x8644b509be38911d:0x61f7b20de1d07c3e">
+                        600 Congress Ave<br />
+                        14th Floor<br />
+                        Austin, TX 78701<br />
+                        </a>
+                    </address>
+
+                    <div>
+                        <i class="icon-phone"></i> <a href="tel:646-820-4411">(646) 820-4411</a><br />
+                        <i class="icon-envelope"></i> <a href="mailto:contact@reactive.io">contact@reactive.io</a>
+                    </div>
+                </div>
+
+                <!-- Stay Connected -->
+                <div class="headline" style="margin-top: 20px; margin-bottom: 5px;"><h2>Stay Connected</h2></div>
+                <ul class="socialnetworks">
+                    <li><a target="_blank" class="tooltips" title="LinkedIn" href="https://www.linkedin.com/company/reactive-io"><i class="icon-linkedin"></i></a></li>
+                    <li><a target="_blank" class="tooltips" title="GitHub" href="https://github.com/reactive-io"><i class="icon-github"></i></a></li>
+                    <li><a target="_blank" class="tooltips" title="Twitter" href="https://twitter.com/reactive_io"><i class="icon-twitter"></i></a></li>
+                    <li><a target="_blank" class="tooltips" title="AngelList" href="https://angel.co/reactive-io"><i class="icon-thumbs-up"></i></a></li>
+                </ul>
+            </div><!--/col-md-4-->
+        </div><!--/row-->
+    </div><!--/container-->
+</div><!--/footer-->
+<!--=== End Footer ===-->
+
+<!--=== Copyright ===-->
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <p class="copyright-space">
+          &copy; Copyright 2016 Reactive.IO, Inc. All Rights Reserved<span style="padding-left: 10px; padding-right: 4px;">|</span><a style="color: #dadada;" href="https://www.vip.vetbiz.gov/Public/Search/ViewSearchResults.aspx?SCID=2744088" target="_blank">A Veteran Owned Small Business</a>
+        </p>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div><!--/row-->
+  </div><!--/container-->
+</div><!--/copyright-->
+<!--=== End Copyright ===-->
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="/assets/plugins/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/plugins/hover-dropdown.min.js"></script>
+<!-- <script type="text/javascript" src="/assets/plugins/back-to-top.js"></script> -->
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="/assets/plugins/gmap/gmap.js"></script>
+<script type="text/javascript" src="/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="/assets/plugins/parallax-slider/js/modernizr.js"></script>
+<script type="text/javascript" src="/assets/plugins/parallax-slider/js/jquery.cslider.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="/assets/js/app.js"></script>
+<script type="text/javascript" src="/assets/js/pages/index.js"></script>
+<script type="text/javascript" src="/assets/js/pages/contact.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initSliders();
+        Index.initParallaxSlider();
+
+        if (window.location.pathname === '/') {
+          Contact.initMap();
+        }
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="/assets/plugins/respond.js"></script>
+<![endif]-->
+
+<!-- Google Analytics -->
+<script>
+  // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  // ga('create', 'UA-49251855-1', 'reactive.io');
+  // ga('send', 'pageview');
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-49251855-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+  ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<!-- HubSpot -->
+<script type="text/javascript">
+  (function(d,s,i,r) {
+    if (d.getElementById(i)){return;}
+    var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+    n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/380935.js';
+    e.parentNode.insertBefore(n, e);
+  })(document,"script","hs-analytics",300000);
+</script>
+
+<!-- Olark -->
+<script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+f[z]=function(){
+(a.s=a.s||[]).push(arguments)};var a=f[z]._={
+},q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+0:+new Date};a.P=function(u){
+a.p[u]=new Date-a.p[0]};function s(){
+a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+b.contentWindow[g].open()}catch(w){
+c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('3117-980-10-5105');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3117-980-10-5105/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+
+</body>
+</html>
+

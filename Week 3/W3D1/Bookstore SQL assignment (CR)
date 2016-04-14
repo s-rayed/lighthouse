@@ -1,0 +1,109 @@
+# Exercise 1
+
+SELECT isbn FROM
+  editions INNER JOIN
+  publishers ON
+  publisher_id = publishers.id
+WHERE name = 'Random House';
+
+#Exercise 2
+
+SELECT isbn, title FROM
+  editions INNER JOIN publishers
+  ON publisher_id = publishers.id
+  INNER JOIN books 
+  ON books.id = editions.book_id
+WHERE name = 'Random House';
+
+# Exercise 3
+
+SELECT stock.isbn, title, stock, retail FROM
+  editions INNER JOIN publishers
+  ON publisher_id = publishers.id
+  INNER JOIN books 
+  ON books.id = editions.book_id
+  INNER JOIN stock
+  ON stock.isbn = editions.isbn
+WHERE name = 'Random House';
+
+# Exercise 4
+
+SELECT stock.isbn, title, stock, retail FROM
+  editions INNER JOIN publishers
+  ON publisher_id = publishers.id
+  INNER JOIN books 
+  ON books.id = editions.book_id
+  INNER JOIN stock
+  ON stock.isbn = editions.isbn
+WHERE name = 'Random House'
+AND stock > 0;
+
+# Exercise 5
+
+SELECT stock.isbn, title, stock, retail,
+  CASE WHEN type = 'h' THEN 'hard cover'
+       WHEN type = 'p' THEN 'paperback'
+       ELSE type
+  END
+ FROM
+  editions INNER JOIN publishers
+  ON publisher_id = publishers.id
+  INNER JOIN books 
+  ON books.id = editions.book_id
+  INNER JOIN stock
+  ON stock.isbn = editions.isbn
+WHERE name = 'Random House'
+AND stock > 0;
+
+# Exercise 6
+
+SELECT DISTINCT publication, title FROM
+  editions FULL OUTER JOIN books
+  ON books.id = editions.book_id;
+Total query runtime: 32 msec
+20 rows retrieved.
+
+#Exercise 7
+
+SELECT title, SUM(stock.stock) FROM
+  books FULL OUTER JOIN editions
+  ON (books.id = editions.book_id)
+  FULL OUTER JOIN stock
+  ON editions.isbn = stock.isbn
+  GROUP BY title;
+
+# Exercise 8
+
+SELECT title, ROUND(AVG(stock.cost),2) AS "Average Cost", ROUND(AVG(stock.retail),2) AS "Average Retail Price", ROUND(AVG(stock.retail - stock.cost),2) AS "Average Profit" FROM
+  books FULL OUTER JOIN editions
+  ON (books.id = editions.book_id)
+  FULL OUTER JOIN stock
+  ON editions.isbn = stock.isbn
+  GROUP BY title;
+
+  Exec=rcise 9
+
+SELECT editions.book_id, SUM(stock.stock) AS stock_count FROM
+  editions RIGHT JOIN stock
+  ON editions.isbn = stock.isbn
+  GROUP BY editions.book_id
+  ORDER BY stock_count DESC
+  LIMIT 1;
+
+  # Exercise 10
+
+  SELECT books.author_id AS "ID", concat(authors.first_name, ' ', authors.last_name) AS "Full Name", count(author_id) AS "Number of Books" FROM
+  authors JOIN books
+  ON authors.id = books.author_id
+  GROUP BY books.author_id, authors.first_name, authors.last_name;
+
+ # Exercise 11
+
+  SELECT books.author_id AS "ID", concat(authors.first_name, ' ', authors.last_name) AS "Full Name", count(author_id) AS "Number of Books" FROM
+  authors JOIN books
+  ON authors.id = books.author_id
+  GROUP BY books.author_id, authors.first_name, authors.last_name
+  ORDER BY count(author_id) DESC;
+
+  Exercise 12
+
