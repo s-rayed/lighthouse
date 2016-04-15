@@ -1,12 +1,12 @@
 -- ================ --
 -- CUSTOM SQL QUERY --
--- QUESTION 12      --
+-- QUESTION 13      --
 -- ================ --
 --
 -- Execute this file directly against the SQLite3 database from the command line.
 -- From the test's root directory, type:
 --
--- sqlite3 db/questions.sqlite3 < spec/12.sql
+-- sqlite3 db/questions.sqlite3 < spec/13.sql
 --
 -- There are no automated tests for this question. You have to compare your result
 -- to the expected output.
@@ -16,7 +16,7 @@
 -- =============== --
 -- 
 -- The database schema is the same as before (see schema.rb). 
--- It has some seeded data in all the tables that you should quickly explore first
+-- It has some seeded data in all three tables that you should quickly explore first
 -- 
 -- To get familiar with the data in a quick and easy way, you can connect to the database via the SQLite3 REPL:
 -- From the test's root directory, type:
@@ -33,33 +33,30 @@
 -- Leave the following lines in so that the output is formatted in a readable way.
 .headers on
 .mode column
-.width 15
+.width 30
+
 -- ======== --
 -- QUESTION --
 -- ======== --
 --
--- Write a query that returns all stores along with its average employee hourly rate
--- To make things simpler, you can assume that store names are always unique
+-- Take the query from Question 9, and then modify it in order to:
 -- 
--- PART B: Round the average value to two decimal places
--- 
--- PART C: Exclude stores that have no employees and thus no value for avg hourly rate
+-- Narrow down the results such that only books that have more than 1 lend show up
 -- 
 -- =============== --
 -- EXPECTED OUTPUT --
 -- =============== --
 --
--- name             average_hourly_rate
--- ---------------  -------------------
--- Muskoka          14.67              
--- Victoria         16.0               
+-- title                           num_lends 
+-- ------------------------------  ----------
+-- Fart noises                     3         
+-- I Win!                          2         
+-- 
 --
 -- ====================== --
 -- EDIT THE FOLLOWING SQL --
 -- ====================== --
 
-SELECT stores.name, ROUND(AVG(employees.hourly_rate),2) AS average_hourly_rate FROM  stores
-JOIN employees ON stores.id = employees.store_id
-GROUP BY stores.name;
 
+SELECT * FROM books;
 

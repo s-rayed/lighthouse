@@ -1,12 +1,12 @@
 -- ================ --
 -- CUSTOM SQL QUERY --
--- QUESTION 12      --
+-- QUESTION 11      --
 -- ================ --
 --
 -- Execute this file directly against the SQLite3 database from the command line.
 -- From the test's root directory, type:
 --
--- sqlite3 db/questions.sqlite3 < spec/12.sql
+-- sqlite3 db/questions.sqlite3 < spec/11.sql
 --
 -- There are no automated tests for this question. You have to compare your result
 -- to the expected output.
@@ -33,33 +33,36 @@
 -- Leave the following lines in so that the output is formatted in a readable way.
 .headers on
 .mode column
-.width 15
+.width 20
 -- ======== --
 -- QUESTION --
 -- ======== --
 --
--- Write a query that returns all stores along with its average employee hourly rate
--- To make things simpler, you can assume that store names are always unique
+-- Write a query that returns list of ALL employee first names along with the name of the store they are working at. 
+-- Note: some employees are not assigned to a store, but should still be included in the result set.
 -- 
--- PART B: Round the average value to two decimal places
--- 
--- PART C: Exclude stores that have no employees and thus no value for avg hourly rate
 -- 
 -- =============== --
 -- EXPECTED OUTPUT --
 -- =============== --
 --
--- name             average_hourly_rate
--- ---------------  -------------------
--- Muskoka          14.67              
--- Victoria         16.0               
+-- first_name            store_name
+-- --------------------  ----------
+-- Linda                 Muskoka   
+-- Mark                  Muskoka   
+-- Topi                  Muskoka   
+-- Rebecca               Victoria  
+-- Jane                  Victoria  
+-- Robin                 Victoria  
+-- Galinda               Victoria  
+-- Tracey                Victoria  
+-- Gordon                          
+-- Bart 
 --
 -- ====================== --
 -- EDIT THE FOLLOWING SQL --
 -- ====================== --
 
-SELECT stores.name, ROUND(AVG(employees.hourly_rate),2) AS average_hourly_rate FROM  stores
-JOIN employees ON stores.id = employees.store_id
-GROUP BY stores.name;
+SELECT first_name, stores.name FROM employees LEFT JOIN stores ON employees.store_id = stores.id;
 
 

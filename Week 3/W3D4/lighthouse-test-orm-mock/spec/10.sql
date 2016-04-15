@@ -56,6 +56,6 @@
 -- EDIT THE FOLLOWING SQL --
 -- ====================== --
 
-SELECT name, female_employees, male_employees FROM stores;
+SELECT name, female_employees + male_employees AS total_employees FROM stores ORDER BY total_employees DESC;
 
 

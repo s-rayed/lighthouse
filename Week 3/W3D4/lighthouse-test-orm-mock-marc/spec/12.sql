@@ -58,8 +58,6 @@
 -- EDIT THE FOLLOWING SQL --
 -- ====================== --
 
-SELECT stores.name, ROUND(AVG(employees.hourly_rate),2) AS average_hourly_rate FROM  stores
-JOIN employees ON stores.id = employees.store_id
-GROUP BY stores.name;
+SELECT stores.name, ROUND(avg(employees.hourly_rate),2) AS average_hourly_rate FROM stores JOIN employees ON stores.id = employees.store_id GROUP BY stores.name;
 
 

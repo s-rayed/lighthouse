@@ -1,12 +1,12 @@
 -- ================ --
 -- CUSTOM SQL QUERY --
--- QUESTION 12      --
+-- QUESTION 10      --
 -- ================ --
 --
 -- Execute this file directly against the SQLite3 database from the command line.
 -- From the test's root directory, type:
 --
--- sqlite3 db/questions.sqlite3 < spec/12.sql
+-- sqlite3 db/questions.sqlite3 < spec/10.sql
 --
 -- There are no automated tests for this question. You have to compare your result
 -- to the expected output.
@@ -33,33 +33,29 @@
 -- Leave the following lines in so that the output is formatted in a readable way.
 .headers on
 .mode column
-.width 15
+.width 20
 -- ======== --
 -- QUESTION --
 -- ======== --
 --
--- Write a query that returns all stores along with its average employee hourly rate
--- To make things simpler, you can assume that store names are always unique
+-- Write a query that returns list of ALL store names and the TOTAL number of employees working there
 -- 
--- PART B: Round the average value to two decimal places
--- 
--- PART C: Exclude stores that have no employees and thus no value for avg hourly rate
+-- PART B: Order the list by this TOTAL number of employees working there (highest first)
 -- 
 -- =============== --
 -- EXPECTED OUTPUT --
 -- =============== --
 --
--- name             average_hourly_rate
--- ---------------  -------------------
--- Muskoka          14.67              
--- Victoria         16.0               
+-- name                  total_employees
+-- --------------------  ---------------
+-- Victoria              5   
+-- Muskoka               3              
+-- Port Renfrew          0 
 --
 -- ====================== --
 -- EDIT THE FOLLOWING SQL --
 -- ====================== --
 
-SELECT stores.name, ROUND(AVG(employees.hourly_rate),2) AS average_hourly_rate FROM  stores
-JOIN employees ON stores.id = employees.store_id
-GROUP BY stores.name;
+SELECT stores.name, (female_employees + male_employees) AS total_employees FROM stores; 
 
 
